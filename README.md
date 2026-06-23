@@ -1,24 +1,32 @@
-# Temperature and Humidity Logging System
+# Temperature and Humidity Logging with Real-Time Data Visualization
 
-This repository contains the embedded software designed for an environmental monitoring system. The core objective of the project is to establish a stable digital connection with a DHT sensor, process ambient climate data in real-time, and log the outputs effectively.
+This repository contains an end-to-end environmental monitoring system. The project micro-manages data acquisition through embedded firmware and leverages Python scripts to parse, log, and visualize the incoming environmental data into graphical formats.
 
-## 📊 System Overview
-The architecture relies on a standard microcontroller retrieving physical data from an ambient sensor. Instead of continuous unstructured reading, the firmware manages timing and intervals to ensure precise data acquisition and minimal sensor heating issues.
+## 📊 System Architecture & Data Flow
+The project is split into two primary layers to demonstrate both low-level hardware control and high-level data processing:
+1. **Hardware Layer (Embedded C/C++):** Establishes a stable connection with the DHT sensor, processes physical climate readings, and streams structural data via Serial communication.
+2. **Data & Analytics Layer (Python):** Captures the real-time serial stream, logs the data into structured files, and generates visual analytics (plots/graphs) for comprehensive environmental evaluation.
 
-## 🛠️ Project Specifications
-* **Architecture:** Embedded C/C++ (Microcontroller Firmware)
-* **Sensor Integration:** Single-bus digital signal processing via DHT sensor.
-* **Output Medium:** Serial data stream for logging and monitoring.
+## 🛠️ Technical Specifications
+* **Firmware Language:** Embedded C/C++ (Microcontroller Architecture)
+* **Data & Analytics Language:** Python (Data Visualization and Processing)
+* **Sensor Integration:** Single-bus digital signal processing via DHT11/DHT22.
+* **Output & Visualization:** Real-time graphical tracking and local data logging.
 
 ## 💡 Engineering & Implementation Details
-The codebase is structured to handle basic embedded protocols and data streams:
-1. **Sensor Initialization:** Verifies the hardware connection on boot.
-2. **Data Acquisition:** Reads the relative humidity and Celsius temperature signals using precise timing intervals.
-3. **Data Integrity:** Implements check procedures to prevent incorrect or corrupted readings from entering the main system loop.
-4. **Output Logging:** Formats the verified data and transmits it to the host computer for real-time tracking.
+* **Sensor Calibration:** Firmware utilizes timing intervals to avoid sensor self-heating and ensures high data integrity.
+* **Stream Parsing:** The Python layer actively listens to the assigned COM/Serial port, preventing data loss during multi-variable streaming.
+* **Graphical Rendering:** Collected data points are mathematically plotted to visually map temperature and humidity trends over time.
+
+## 📁 Project Structure & Assets
+*(Coming Soon)* This repository will actively maintain:
+* `/src_embedded`: Firmware source files.
+* `/src_python`: Python scripts for logging and visualization.
+* `/hardware_images`: Physical circuit photos and schematics.
+* `/output_plots`: Sample generated graphs and data trends.
 
 ## 🚀 Setup & Usage
-1. Connect the DHT sensor's data pin to the specified digital pin on your microcontroller board.
-2. Provide appropriate power (VCC and GND) according to your specific hardware setup.
-3. Upload the source code using your standard embedded development environment (IDE).
-4. Open the serial terminal to monitor the continuous live environment logs.
+1. Connect the DHT sensor to the designated digital pin on your microcontroller.
+2. Upload the embedded firmware using your standard development environment.
+3. Configure and execute the Python visualization script, ensuring the correct Serial port configuration.
+4. Monitor live environmental trends via the auto-generated graphical interface.
